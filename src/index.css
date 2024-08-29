@@ -1,0 +1,39 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+:root {
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+a {
+  text-decoration: none;
+}
+
+.container {
+  width: 90%;
+  margin: 0 auto;
+}
+
+.card {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.quantity {
+  position: absolute;
+  right: 40%;
+  top: 15px;
+  background: red;
+  width: 20px;
+  color: white;
+  text-align: center;
+  font-size: 12px;
+  border-radius: 50%;
+}
