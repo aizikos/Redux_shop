@@ -5,6 +5,7 @@ import Home from "./components/Home";
 import Create from "./components/Create";
 import Product from "./components/Product";
 import Basket from "./components/Basket";
+import Favorite from "./components/Favorite";
 
 
 
@@ -17,6 +18,8 @@ const App = () => {
         <Route path="/create" element={<Create />} />
         <Route path="/product" element={<Product />} />
         <Route path="/basket" element={<Basket/>} />
+        <Route path="/favorite" element={<Favorite/>} />
+
       </Routes>
     </div>
   )

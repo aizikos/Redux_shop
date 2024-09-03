@@ -1,20 +1,17 @@
-import React from "react";
-import { useSelector } from "react-redux";
+import React from 'react'
+import ProductCard from '../ProductCard';
 import ERROR from '../../assets/Error_404.webp'
-import ProductCard from "../ProductCard";
+import { useSelector } from 'react-redux';
 
-
-
-const Product = () => {
-
-    const { product } = useSelector((s) => s)
+const Favorite = () => {
+    const { favorite } = useSelector((s) => s)
     return (
         <div className="mt-[100px]">
             <div className="container">
-                {product.length ?
+                {favorite.length ?
                     <div className="card item-center gap-[40px] ">
                         {
-                            product.map((el) => <ProductCard el ={el}/>)
+                            favorite.map((el) => <ProductCard el= {el}/>)
                         }
                     </div>
                     :
@@ -25,8 +22,8 @@ const Product = () => {
 
             </div>
         </div>
-    )
-}
+    );
+      
+    };
 
-
-export default Product;
+export default Favorite

@@ -2,12 +2,13 @@ import React from "react";
 import Zoom from 'react-medium-image-zoom'
 import 'react-medium-image-zoom/dist/styles.css'
 import { useDispatch, useSelector } from "react-redux";
+import { FaHeart } from "react-icons/fa";
 
 
 
 const ProductCard = ({ el }) => {
     const dispatch = useDispatch();
-    const { basket } = useSelector((s) => s)
+    const { basket} = useSelector((s) => s)    
 
     console.log(basket);
     
@@ -15,6 +16,11 @@ const ProductCard = ({ el }) => {
     function addToBasket(item) {
         dispatch({ type: "ADD_TO_BASKET", payload: item })
     }
+
+    function addToFavorite(item) {
+        dispatch({type:'ADD_TO_FAVORITE', payload: item})
+    }
+    
 
     return (
 
@@ -52,6 +58,11 @@ const ProductCard = ({ el }) => {
                 </div>
                 <div class="flex items-center justify-between">
                     <span class="text-3xl font-bold text-gray-900 text-black">${el.price}</span>
+                    <div >
+                        <a  onClick={() => addToFavorite(el)} href="#">
+                            <FaHeart/>
+                        </a>
+                    </div>
                     <button
                         onClick={() => addToBasket(el)}
                         class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 
