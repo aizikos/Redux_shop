@@ -1,7 +1,7 @@
 const initialState = {
     product: JSON.parse(localStorage.getItem("product")) || [],
     basket: JSON.parse(localStorage.getItem('basket')) || [],
-    favorite: [],
+    favorite: JSON.parse(localStorage.getItem('favorite'))||     [],
 }
 
 
@@ -27,8 +27,12 @@ export const Reducer = (state = initialState, action) => {
                 { ...el, quently: el.quently > 1 ? el.quently - 1: 1 } : el) }
         case "DELETE":
             return {... state, basket: state.basket.filter((el) => el.id !== action.payload.id)}
-            case 'ADD_TO_FAVORITE':
-                return {...state, favorite: [...state.favorite, action.payload]}
+        case 'ADD_TO_FAVORITE':
+            let favres = [...state.favorite, action.payload]
+            localStorage.setItem('favorite', JSON.stringify(favres))
+            return {...state, favorite: favres}
+        case "DELETE_FAV":
+            return {... state, favorite: state.favorite.filter((el) => el.id !== action.payload.id)}
         default:
             return state;
     }

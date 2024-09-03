@@ -28,7 +28,7 @@ a {
 
 .quantity {
   position: absolute;
-  right: 40%;
+  right: 44%;
   top: 15px;
   background: red;
   width: 20px;
@@ -38,3 +38,10 @@ a {
   border-radius: 50%;
 }
 
+.Favorite{
+  font-size: 30px;
+}
+
+.Favorite:hover{
+  color: red;
+}

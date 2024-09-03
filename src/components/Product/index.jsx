@@ -19,7 +19,7 @@ const Product = () => {
                     </div>
                     :
                     <div className="w-[100%] flex item-center justify-center">
-                        <img src={ERROR} alt="img" className="w-[70%]" />
+                        <img src={ERROR} alt="img" className="w-[40%]" />
                     </div>
                 }
 

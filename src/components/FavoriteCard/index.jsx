@@ -2,21 +2,18 @@ import React from "react";
 import Zoom from 'react-medium-image-zoom'
 import 'react-medium-image-zoom/dist/styles.css'
 import { useDispatch, useSelector } from "react-redux";
-import { FaHeart } from "react-icons/fa";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 
 
-const ProductCard = ({ el }) => {
+const FavoriteCard = ({ el }) => {
     const dispatch = useDispatch();
-    const { basket} = useSelector((s) => s)    
+    const { favorite } = useSelector((s) => s)
 
-    console.log(basket);
-
-    const succses = () => {
-        toast.success('🦄 Добавлено', {
-            position: "top-right",
+    const deleteFav = () => {
+        toast.error('🦄 Запольните данные', {
+            position: "top-center",
             autoClose: 5000,
             hideProgressBar: false,
             closeOnClick: true,
@@ -26,17 +23,12 @@ const ProductCard = ({ el }) => {
             theme: "colored",
         });
     }
-    
 
-    function addToBasket(item) {
-        dispatch({ type: "ADD_TO_BASKET", payload: item })
+    function DeleteFav(item) {
+        dispatch({ type: 'DELETE_FAV', payload: item })
+        deleteFav()
     }
 
-    function addToFavorite(item) {
-        dispatch({type:'ADD_TO_FAVORITE', payload: item})
-        succses()
-    }
-    
 
     return (
 
@@ -49,7 +41,7 @@ const ProductCard = ({ el }) => {
             <div class="px-5 pb-5">
                 <a href="#">
                     <h5 class="text-xl font-semibold tracking-tight text-gray-900 text-black">
-                        {el.name[0].toUpperCase()+el.name.substr(1).toLowerCase()}
+                        {el.name}
                     </h5>
                 </a>
                 <div class="flex items-center mt-2.5 mb-5">
@@ -75,17 +67,14 @@ const ProductCard = ({ el }) => {
                 <div class="flex items-center justify-between">
                     <span class="text-3xl font-bold text-gray-900 text-black">${el.price}</span>
                     <div >
-                        <a  onClick={() => addToFavorite(el)} href="#">
-                            <FaHeart className="Favorite"/>
-                        </a>
                     </div>
                     <button
-                        onClick={() => addToBasket(el)}
-                        class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 
-                    font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
-                        Buy
+                        onClick={() => DeleteFav(el)}
+                        class="text-white bg-red-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 
+                        font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-red-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+                        DELETE
                     </button>
-                    <ToastContainer/>
+                    <ToastContainer />
                 </div>
             </div>
         </div>
@@ -93,4 +82,4 @@ const ProductCard = ({ el }) => {
     )
 }
 
-export default ProductCard;
+export default FavoriteCard;
